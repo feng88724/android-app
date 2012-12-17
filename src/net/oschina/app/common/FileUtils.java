@@ -233,7 +233,7 @@ public class FileUtils
         } else if (fileS < 1073741824) {
             fileSizeString = df.format((double) fileS / 1048576) + "MB";
         } else {
-            fileSizeString = df.format((double) fileS / 1073741824) + "G";
+            fileSizeString = df.format((double) fileS / 1073741824) + "GB";
         }
         return fileSizeString;
     }
@@ -372,7 +372,7 @@ public class FileUtils
 	 * @return
 	 */
 	public static boolean deleteDirectory(String fileName) {
-		boolean status;
+		boolean status = false;
 		SecurityManager checker = new SecurityManager();
 
 		if (!fileName.equals("")) {
@@ -395,13 +395,9 @@ public class FileUtils
 					status = true;
 				} catch (Exception e) {
 					e.printStackTrace();
-					status = false;
 				}
-
-			} else
-				status = false;
-		} else
-			status = false;
+			} 
+		}
 		return status;
 	}
 
@@ -411,7 +407,7 @@ public class FileUtils
 	 * @return
 	 */
 	public static boolean deleteFile(String fileName) {
-		boolean status;
+		boolean status = false;
 		SecurityManager checker = new SecurityManager();
 
 		if (!fileName.equals("")) {
@@ -426,12 +422,9 @@ public class FileUtils
 					status = true;
 				} catch (SecurityException se) {
 					se.printStackTrace();
-					status = false;
 				}
-			} else
-				status = false;
-		} else
-			status = false;
+			}
+		}
 		return status;
 	}
 }
